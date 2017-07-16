@@ -9,6 +9,7 @@ export class PhotoService {
   constructor(private af: AngularFireDatabase) {
     this.photos = af.list('photos');
   }
+
   addPhoto (newPhoto: Photo) {
     this.photos.push(newPhoto);
   }
@@ -21,7 +22,7 @@ export class PhotoService {
     let foundPhoto = this.getPhotoById(selectedPhoto.$key);
     foundPhoto.remove();
   }
-  
+
   getPhotoById(photoId: string){
     return this.af.object('photos/' + photoId);
   }
